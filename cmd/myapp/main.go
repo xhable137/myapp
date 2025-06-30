@@ -9,7 +9,12 @@ import (
 	"time"
 
 	"github.com/xhable137/myapp/pkg/math"
+	"github.com/xhable137/myapp/pkg/models"
 )
+
+func swap(a, b *int) {
+	*a, *b = *b, *a
+}
 
 func main() {
 	// Демонстрация Average
@@ -46,4 +51,23 @@ func main() {
 	default:
 		fmt.Println("Good evening")
 	}
+
+	// Демонстрация swap
+	x, y := 10, 20
+	fmt.Printf("Before swap: x = %d, y = %d\n", x, y)
+	swap(&x, &y)
+	fmt.Printf("After swap: x = %d, y = %d\n", x, y)
+
+	// Демонстрация Person
+	p := models.Person{
+		Name: "John",
+		Age:  30,
+	}
+	fmt.Println(p.Greet())
+	fmt.Println(p.HaveBirthday())
+
+	// Демонстрация Person с методами
+	p.Greet()
+	p.HaveBirthday()
+	fmt.Println(p.Age)
 }
